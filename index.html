@@ -17,8 +17,33 @@
 
 <script type="text/x-handlebars" data-template-name="index">
 <h3>Index</h3>
-<label>Enter a summoner name: {{input value=searchTerm}}</label>
-<button {{action "submit"}}>Submit</button>
+<form>
+    <label>Enter a summoner name: {{input value=searchTerm}}</label>
+    <button {{action "submit"}}>Submit</button>
+</form>
 </script>
+
+<script type="text/x-handlebars" data-template-name="summoner">
+<h3>Summoner page: {{name}} (level {{summonerLevel}})</h3>
+<p>Id: {{id}}</p>
+<ul>
+    <li>{{#link-to 'summoner.rankedStats' this}}ranked stats{{/link-to}}</li>
+    <li>{{#link-to 'summoner.champStats' this}}champ stats{{/link-to}}</li>
+</ul>
+<div>{{outlet}}</div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="summoner/rankedStats">
+<h2>{{name}}</h2>
+<ul>
+    <li>{{tier}} {{division}} ({{leaguePoints}} LP)</li>
+    <li>{{wins}} wins</li>
+</ul>
+</script>
+
+<script type="text/x-handlebars" data-template-name="summoner/champStats">
+<h2>Champ stats here</h2>
+</script>
+
 </body>
 </html>
